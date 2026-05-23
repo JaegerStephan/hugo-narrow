@@ -8,7 +8,7 @@
     <!-- 桌面端布局 -->
     <div class="relative hidden w-full items-center md:flex md:min-w-0">
       <!-- 左侧：站点 Logo -->
-      <div class="z-10 flex items-center">
+      <div class="z-10 flex shrink-0 items-center">
         {{ if ne site.Params.header.logo.image "" }}
           <a
             href="{{ if and site.Params.header.logo.link (ne site.Params.header.logo.link `/`) }}
@@ -120,8 +120,8 @@
         </div>
       </nav>
 
-      <!-- 右侧：桌面端控制区域 -->
-      <div class="z-10 flex items-center space-x-2">
+      <!-- 右侧：桌面端控制区域（推到最右边） -->
+      <div class="z-10 ml-auto flex items-center space-x-2">
         <!-- 语言切换按钮 -->
         {{ partial "ui/language-switcher.html" . }}
 
