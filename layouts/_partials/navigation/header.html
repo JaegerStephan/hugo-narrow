@@ -6,9 +6,9 @@
     class="border-border bg-card/80 flex items-center rounded-xl border px-6 py-4 shadow-sm backdrop-blur-sm"
   >
     <!-- 桌面端布局 -->
-    <div class="hidden w-full items-center md:flex md:min-w-0">
+    <div class="relative hidden w-full items-center md:flex md:min-w-0">
       <!-- 左侧：站点 Logo -->
-      <div class="flex items-center">
+      <div class="z-10 flex items-center">
         {{ if ne site.Params.header.logo.image "" }}
           <a
             href="{{ if and site.Params.header.logo.link (ne site.Params.header.logo.link `/`) }}
@@ -16,13 +16,13 @@
             {{ else }}
               {{ site.Home.RelPermalink | relLangURL }}
             {{ end }}"
-            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full transition-transform duration-200 hover:scale-105"
+            class="lex h-10 items-center gap-2 overflow-hidden transition-transform duration-200 hover:scale-105"
             aria-label="{{ site.Title }}"
           >
             <img
               src="{{ $logoSrc | relURL }}"
               alt="{{ site.Title }}"
-              class="h-full w-full object-cover"
+              class="h-8 w-auto object-contain"
             />
           </a>
         {{ else }}
@@ -37,9 +37,9 @@
         {{ end }}
       </div>
 
-      <!-- 中间：桌面端导航 -->
-      <nav class="mx-8 flex min-w-0 flex-1 items-center justify-center">
-        <div class="flex flex-wrap items-center justify-center space-x-1">
+      <!-- 中间：桌面端导航（绝对居中） -->
+      <nav class="absolute left-1/2 top-1/2 z-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <div class="flex flex-wrap items-center justify-center gap-x-1">
           {{ $currentPage := . }}
           {{ range site.Menus.main }}
             {{/* 生成语言感知的URL */}}
@@ -121,7 +121,7 @@
       </nav>
 
       <!-- 右侧：桌面端控制区域 -->
-      <div class="flex items-center space-x-2">
+      <div class="z-10 flex items-center space-x-2">
         <!-- 语言切换按钮 -->
         {{ partial "ui/language-switcher.html" . }}
 
@@ -137,12 +137,43 @@
 
     <!-- 移动端布局 -->
     <div class="flex w-full items-center justify-between md:hidden">
-      <!-- 左侧：移动端菜单按钮 -->
-      {{ partial "navigation/mobile-menu-toggle.html" . }}
-
+      
+      <!-- 左侧：站点 Logo -->
+      <div class="flex items-center">
+        {{ if ne site.Params.header.logo.image "" }}
+          <a
+            href="{{ if and site.Params.header.logo.link (ne site.Params.header.logo.link `/`) }}
+              {{ site.Params.header.logo.link | relLangURL }}
+            {{ else }}
+              {{ site.Home.RelPermalink | relLangURL }}
+            {{ end }}"
+            class="lex h-10 items-center gap-2 overflow-hidden transition-transform duration-200 hover:scale-105"
+            aria-label="{{ site.Title }}"
+          >
+            <img
+              src="{{ $logoSrc | relURL }}"
+              alt="{{ site.Title }}"
+              class="h-8 w-auto object-contain"
+            />
+          </a>
+        {{ else }}
+          <!-- 默认 Logo：使用站点标题首字母 -->
+          <a
+            href="{{ site.Home.RelPermalink }}"
+            class="bg-primary text-primary-foreground hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold transition-transform duration-200 hover:scale-105"
+            aria-label="{{ site.Title }}"
+          >
+            {{ substr site.Title 0 1 | upper }}
+          </a>
+        {{ end }}
+      </div>
 
       <!-- 右侧：移动端控制区域 -->
       <div class="flex items-center space-x-2">
+
+        <!-- 左侧：移动端菜单按钮 -->
+        {{ partial "navigation/mobile-menu-toggle.html" . }}
+
         <!-- 语言切换按钮 -->
         {{ partial "ui/language-switcher.html" . }}
 
