@@ -171,9 +171,6 @@
       <!-- 右侧：移动端控制区域 -->
       <div class="flex items-center space-x-2">
 
-        <!-- 左侧：移动端菜单按钮 -->
-        {{ partial "navigation/mobile-menu-toggle.html" . }}
-
         <!-- 语言切换按钮 -->
         {{ partial "ui/language-switcher.html" . }}
 
@@ -184,6 +181,11 @@
 
         <!-- 明暗模式切换按钮 -->
         {{ partial "ui/dark-mode-switcher.html" . }}
+
+
+        <!-- 左侧：移动端菜单按钮 -->
+        {{ partial "navigation/mobile-menu-toggle.html" . }}
+
       </div>
     </div>
   </div>
