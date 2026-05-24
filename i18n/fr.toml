@@ -90,7 +90,3 @@
   skills         = "Compétences"
   certifications = "Certifications"
   languages      = "Langues"
-  present        = "Présent"
-  print          = "Imprimer / Sauvegarder en PDF"
-  contact        = "Contact"
-  summary        = "Résumé"

@@ -96,7 +96,3 @@
   skills         = "Навыки"
   certifications = "Сертификаты"
   languages      = "Языки"
-  present        = "По настоящее время"
-  print          = "Печать / Сохранить PDF"
-  contact        = "Контакты"
-  summary        = "О себе"

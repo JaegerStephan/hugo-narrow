@@ -21,8 +21,8 @@ experience:
   - company: "Company Name"
     title: "Job Title"
     location: "City, Country"
-    start: "2022-01"
-    end: ""           # leave empty for "Present"
+    start: "Jan 2022"
+    end: "Present"    # write any end label you like (e.g. "Present", "至今", "现在")
     description: ""   # optional paragraph below the title
     highlights:
       - "Achievement or responsibility 1"
@@ -32,8 +32,8 @@ experience:
   - company: "Previous Company"
     title: "Previous Title"
     location: "City, Country"
-    start: "2019-06"
-    end: "2021-12"
+    start: "Jun 2019"
+    end: "Dec 2021"
     highlights:
       - "Achievement or responsibility 1"
     stack: []
@@ -58,7 +58,7 @@ skills:
 certifications:
   - name: "Certification Name"
     issuer: "Issuing Organisation"
-    date: "2023-04"
+    date: "Apr 2023"
     url: ""           # link to credential, leave empty if none
 
 # Optional: spoken languages

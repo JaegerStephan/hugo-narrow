@@ -18,8 +18,8 @@ experience:
   - company: "Meridian Technologies"
     title: "Senior Software Engineer"
     location: "Berlin, Germany (Remote)"
-    start: "2021-03"
-    end: ""
+    start: "Mar 2021"
+    end: "Present"
     highlights:
       - "Redesigned core data pipeline processing 50M events/day, reducing p99 latency from 4s to 280ms"
       - "Led migration from monolith to event-driven microservices across 6 teams"
@@ -30,8 +30,8 @@ experience:
   - company: "Stackfield GmbH"
     title: "Backend Engineer"
     location: "Munich, Germany"
-    start: "2018-07"
-    end: "2021-02"
+    start: "Jul 2018"
+    end: "Feb 2021"
     highlights:
       - "Built real-time collaboration engine powering 200k daily active users"
       - "Reduced infrastructure costs by 35% through query optimisation and caching strategy"
@@ -41,8 +41,8 @@ experience:
   - company: "Finleap GmbH"
     title: "Software Engineer"
     location: "Berlin, Germany"
-    start: "2015-09"
-    end: "2018-06"
+    start: "Sep 2015"
+    end: "Jun 2018"
     highlights:
       - "Developed payment processing integrations for 12 European markets"
       - "Led adoption of internal API standards adopted across 8 product teams"
@@ -75,11 +75,11 @@ skills:
 certifications:
   - name: "AWS Solutions Architect – Professional"
     issuer: "Amazon Web Services"
-    date: "2022-11"
+    date: "Nov 2022"
     url: ""
   - name: "Certified Kubernetes Administrator (CKA)"
     issuer: "Cloud Native Computing Foundation"
-    date: "2021-04"
+    date: "Apr 2021"
     url: ""
 
 languages:

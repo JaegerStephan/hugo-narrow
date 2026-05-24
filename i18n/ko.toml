@@ -87,7 +87,3 @@
   skills         = "기술"
   certifications = "자격증"
   languages      = "언어"
-  present        = "현재"
-  print          = "인쇄 / PDF 저장"
-  contact        = "연락처"
-  summary        = "소개"

@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{- $p := .Params -}}
 
-  <article class="px-4 py-6">
+  <article class="py-6">
     <!-- 页眉：姓名、职位、联系方式 -->
     <header class="mb-8">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -16,7 +16,7 @@
           <div class="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {{ with $p.location }}
               <span class="flex items-center gap-1">
-                {{ partial "features/icon.html" (dict "name" "contact" "size" "xs" "ariaLabel" "") }}
+                {{ partial "features/icon.html" (dict "name" "location" "size" "xs" "ariaLabel" "") }}
                 {{ . }}
               </span>
             {{ end }}
@@ -27,10 +27,10 @@
               </a>
             {{ end }}
             {{ with $p.phone }}
-              <span class="flex items-center gap-1">
-                {{ partial "features/icon.html" (dict "name" "contact" "size" "xs" "ariaLabel" "") }}
+              <a href="tel:{{ . | replaceRE `\s+` `` }}" class="hover:text-primary flex items-center gap-1 transition-colors">
+                {{ partial "features/icon.html" (dict "name" "phone" "size" "xs" "ariaLabel" "") }}
                 {{ . }}
-              </span>
+              </a>
             {{ end }}
             {{ with $p.website }}
               <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary flex items-center gap-1 transition-colors">
@@ -84,22 +84,7 @@
                   {{ end }}
                 </div>
                 <div class="text-muted-foreground shrink-0 text-sm">
-                  {{- $start := .start -}}
-                  {{- $end := .end -}}
-                  {{- if $start -}}
-                    {{- $startNorm := $start -}}
-                    {{- if eq (len $start) 4 -}}{{- $startNorm = printf "%s-01-01" $start -}}{{- end -}}
-                    {{- if eq (len $start) 7 -}}{{- $startNorm = printf "%s-01" $start -}}{{- end -}}
-                    {{- $startFmt := (time $startNorm).Format "Jan 2006" -}}
-                    {{- if $end -}}
-                      {{- $endNorm := $end -}}
-                      {{- if eq (len $end) 4 -}}{{- $endNorm = printf "%s-01-01" $end -}}{{- end -}}
-                      {{- if eq (len $end) 7 -}}{{- $endNorm = printf "%s-01" $end -}}{{- end -}}
-                      {{ $startFmt }} – {{ (time $endNorm).Format "Jan 2006" }}
-                    {{- else -}}
-                      {{ $startFmt }} – {{ T "resume.present" | default "Present" }}
-                    {{- end -}}
-                  {{- end -}}
+                  {{ .start }} – {{ .end }}
                 </div>
               </div>
               {{ with .description }}
@@ -108,8 +93,8 @@
               {{ with .highlights }}
                 <ul class="space-y-1">
                   {{ range . }}
-                    <li class="text-muted-foreground flex items-start gap-2 text-sm">
-                      <span class="text-primary mt-1.5 shrink-0 text-xs">▸</span>
+                    <li class="text-muted-foreground flex items-baseline gap-2 text-sm">
+                      <span class="text-primary shrink-0">▸</span>
                       {{ . }}
                     </li>
                   {{ end }}
@@ -150,15 +135,7 @@
                   {{ end }}
                 </div>
                 <div class="text-muted-foreground shrink-0 text-sm">
-                  {{- $start := .start -}}
-                  {{- $end := .end -}}
-                  {{- if $start -}}
-                    {{- if $end -}}
-                      {{ $start }} – {{ $end }}
-                    {{- else -}}
-                      {{ $start }} – {{ T "resume.present" | default "Present" }}
-                    {{- end -}}
-                  {{- end -}}
+                  {{ .start }} – {{ .end }}
                 </div>
               </div>
             </div>
@@ -195,16 +172,16 @@
     {{ $hasCerts := $p.certifications }}
     {{ $hasLangs := $p.languages }}
     {{ if or $hasCerts $hasLangs }}
-      <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
 
         <!-- 证书 -->
         {{ with $hasCerts }}
-          <section>
+          <section class="flex flex-col">
             <h2 class="text-foreground mb-4 flex items-center gap-2 text-xl font-bold">
               {{ partial "features/icon.html" (dict "name" "file-text" "size" "md" "ariaLabel" "") }}
               {{ T "resume.certifications" | default "Certifications" }}
             </h2>
-            <div class="bg-card border-border rounded-lg border p-6 shadow-sm">
+            <div class="bg-card border-border rounded-lg border p-6 shadow-sm flex-1">
               <ul class="space-y-3">
                 {{ range . }}
                   <li>
@@ -228,12 +205,12 @@
 
         <!-- 语言能力 -->
         {{ with $hasLangs }}
-          <section>
+          <section class="flex flex-col">
             <h2 class="text-foreground mb-4 flex items-center gap-2 text-xl font-bold">
               {{ partial "features/icon.html" (dict "name" "language" "size" "md" "ariaLabel" "") }}
               {{ T "resume.languages" | default "Languages" }}
             </h2>
-            <div class="bg-card border-border rounded-lg border p-6 shadow-sm">
+            <div class="bg-card border-border rounded-lg border p-6 shadow-sm flex-1">
               <ul class="space-y-2">
                 {{ range . }}
                   <li class="flex items-center justify-between">
