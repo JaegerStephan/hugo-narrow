@@ -80,3 +80,10 @@
     featuredProjects = "Dự án nổi bật"
     viewAll          = "Xem tất cả"
     recentPosts      = "Bài viết mới"
+
+[resume]
+  experience     = "Kinh nghiệm"
+  education      = "Học vấn"
+  skills         = "Kỹ năng"
+  certifications = "Chứng chỉ"
+  languages      = "Ngôn ngữ"

@@ -80,3 +80,10 @@
     featuredProjects = "추천 프로젝트"
     viewAll          = "모두 보기"
     recentPosts      = "최근 글"
+
+[resume]
+  experience     = "경력"
+  education      = "학력"
+  skills         = "기술"
+  certifications = "자격증"
+  languages      = "언어"

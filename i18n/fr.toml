@@ -83,3 +83,10 @@
     featuredProjects = "Projets en vedette"
     viewAll          = "Tout voir"
     recentPosts      = "Articles récents"
+
+[resume]
+  experience     = "Expérience"
+  education      = "Formation"
+  skills         = "Compétences"
+  certifications = "Certifications"
+  languages      = "Langues"

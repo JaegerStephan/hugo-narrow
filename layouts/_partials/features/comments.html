@@ -7,6 +7,7 @@
   - Waline (简洁评论系统)
   - Artalk (自托管评论系统)
   - Twikoo (简洁评论系统)
+  - Comentario (自托管评论系统)
 
   @context {page} . 当前文章页面对象
 */}}
@@ -52,18 +53,11 @@
           {{ partial "features/comments/artalk.html" (dict "Site" $.Site "Page" $ "id" "artalk-comments") }}
         {{- else if eq $commentSystem "twikoo" -}}
           {{ partial "features/comments/twikoo.html" (dict "Site" $.Site "Page" $ "id" "twikoo-comments") }}
+        {{- else if eq $commentSystem "comentario" -}}
+          {{ partial "features/comments/comentario.html" (dict "Site" $.Site "Page" $ "id" "comentario-comments") }}
         {{- else -}}
           {{- /* 不支持的评论系统 */ -}}
-          <div class="py-8 text-center">
-            <div
-              class="bg-muted/50 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full"
-            >
-              {{ partial "features/icon.html" (dict "name" "alert-circle" "size" "lg" "ariaLabel" "") }}
-            </div>
-            <h3 class="text-foreground mb-2 text-lg font-medium">
-              {{ T "comments.notConfigured" }}
-            </h3>
-          </div>
+          {{ partial "features/comments/notice.html" (dict "icon" "alert-circle") }}
         {{- end -}}
       </div>
     </div>
